@@ -40,6 +40,7 @@ import BuildingFeatures from "./sections/BuildingFeatures"
 import RankingsAndResults from "./sections/RankingsAndResults"
 import ApplicationAddress from "./sections/ApplicationAddress"
 import ApplicationDates from "./sections/ApplicationDates"
+import CommunityType from "./sections/CommunityType"
 
 export type FormListing = Listing & {
   applicationDueDateField?: {
@@ -187,6 +188,7 @@ export type TempUnit = Unit & {
 }
 
 const formatFormData = (data: FormListing, units: TempUnit[]) => {
+  console.log(data.reservedCommunityType)
   const showWaitlistNumber =
     data.waitlistOpenQuestion === YesNoAnswer.Yes && data.waitlistSizeQuestion === YesNoAnswer.Yes
 
@@ -423,6 +425,7 @@ const ListingForm = ({ listing, editMode }: ListingFormProps) => {
                       <ListingIntro />
                       <ListingPhoto />
                       <BuildingDetails />
+                      <CommunityType />
                       <Units
                         units={units}
                         setUnits={setUnits}
