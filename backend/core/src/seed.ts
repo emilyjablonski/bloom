@@ -17,6 +17,8 @@ import { ListingDefaultOnePreferenceSeed } from "./seeds/listings/listing-defaul
 import { ListingDefaultNoPreferenceSeed } from "./seeds/listings/listing-default-no-preference-seed"
 import { ListingTritonSeed } from "./seeds/listings/listing-triton-seed"
 import { ListingDefaultBmrChartSeed } from "./seeds/listings/listing-default-bmr-chart-seed"
+import { ListingDefaultReservedSeed } from "./seeds/listings/listing-default-reserved-seed"
+import { ListingDefaultFCFSSeed } from "./seeds/listings/listing-default-fcfs-seed"
 
 const argv = yargs.scriptName("seed").options({
   test: { type: "boolean", default: false },
@@ -47,6 +49,8 @@ const seedListings = async (app: INestApplicationContext) => {
     app.get<ListingDefaultSeed>(ListingDefaultNoPreferenceSeed),
     app.get<ListingDefaultSeed>(ListingDefaultBmrChartSeed),
     app.get<ListingDefaultSeed>(ListingTritonSeed),
+    app.get<ListingDefaultSeed>(ListingDefaultReservedSeed),
+    app.get<ListingDefaultSeed>(ListingDefaultFCFSSeed),
   ]
 
   const listingRepository = app.get<Repository<Listing>>(getRepositoryToken(Listing))

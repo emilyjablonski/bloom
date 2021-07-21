@@ -80,8 +80,7 @@ export const ListingView = (props: ListingProps) => {
 
   if (amiValues.length == 1) {
     groupedUnits = groupNonReservedAndReservedSummaries(
-      listing.unitsSummarized.byNonReservedUnitType,
-      listing.unitsSummarized.byReservedType
+      listing.unitsSummarized.byNonReservedUnitType
     )
   } // else condition is handled inline below
 
@@ -189,10 +188,7 @@ export const ListingView = (props: ListingProps) => {
             })
 
             groupedUnits = byAMI
-              ? groupNonReservedAndReservedSummaries(
-                  byAMI.byNonReservedUnitType,
-                  byAMI.byReservedType
-                )
+              ? groupNonReservedAndReservedSummaries(byAMI.byNonReservedUnitType)
               : []
 
             return (

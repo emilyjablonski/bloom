@@ -22,9 +22,10 @@ import { ListingColiseumSeed } from "../seeds/listings/listing-coliseum-seed"
 import { ListingDefaultOnePreferenceSeed } from "../seeds/listings/listing-default-one-preference-seed"
 import { ListingDefaultNoPreferenceSeed } from "../seeds/listings/listing-default-no-preference-seed"
 import { Preference } from "../preferences/entities/preference.entity"
-import { ListingDefaultFCFSPreferenceSeed } from "../seeds/listings/listing-default-fcfs-seed"
+import { ListingDefaultFCFSSeed } from "../seeds/listings/listing-default-fcfs-seed"
 import { ListingTritonSeed } from "../seeds/listings/listing-triton-seed"
 import { ListingDefaultBmrChartSeed } from "../seeds/listings/listing-default-bmr-chart-seed"
+import { ListingDefaultReservedSeed } from "../seeds/listings/listing-default-reserved-seed"
 
 @Module({})
 export class SeederModule {
@@ -63,9 +64,10 @@ export class SeederModule {
         ListingColiseumSeed,
         ListingDefaultOnePreferenceSeed,
         ListingDefaultNoPreferenceSeed,
-        ListingDefaultFCFSPreferenceSeed,
         ListingDefaultBmrChartSeed,
         ListingTritonSeed,
+        ListingDefaultReservedSeed,
+        ListingDefaultFCFSSeed,
       ],
     }
   }

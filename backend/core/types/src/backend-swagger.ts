@@ -3373,23 +3373,12 @@ export interface UnitSummary {
   floorRange?: MinMax;
 }
 
-export interface UnitSummaryByReservedType {
-  /**  */
-  reservedType: string;
-
-  /**  */
-  byUnitTypeAndRent: UnitSummary[];
-}
-
 export interface UnitSummaryByAMI {
   /**  */
   percent: string;
 
   /**  */
   byNonReservedUnitType: UnitSummary[];
-
-  /**  */
-  byReservedType: UnitSummaryByReservedType[];
 }
 
 export interface HMI {
@@ -3405,9 +3394,6 @@ export interface UnitsSummarized {
   unitTypes: UnitType[];
 
   /**  */
-  reservedTypes: string[];
-
-  /**  */
   priorityTypes: UnitAccessibilityPriorityType[];
 
   /**  */
@@ -3421,9 +3407,6 @@ export interface UnitsSummarized {
 
   /**  */
   byNonReservedUnitType: UnitSummary[];
-
-  /**  */
-  byReservedType: UnitSummaryByReservedType[];
 
   /**  */
   byAMI: UnitSummaryByAMI[];
@@ -3659,9 +3642,6 @@ export interface Unit {
 
   /**  */
   number?: string;
-
-  /**  */
-  reservedType?: string;
 
   /**  */
   sqFeet?: string;
@@ -4021,9 +4001,6 @@ export interface UnitCreate {
   number?: string;
 
   /**  */
-  reservedType?: string;
-
-  /**  */
   sqFeet?: string;
 
   /**  */
@@ -4371,9 +4348,6 @@ export interface UnitUpdate {
 
   /**  */
   number?: string;
-
-  /**  */
-  reservedType?: string;
 
   /**  */
   sqFeet?: string;

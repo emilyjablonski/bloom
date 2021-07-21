@@ -168,13 +168,11 @@ const defaults: FormListing = {
   showWaitlist: false,
   unitsSummarized: {
     unitTypes: [],
-    reservedTypes: [],
     priorityTypes: [],
     amiPercentages: [],
     byUnitTypeAndRent: [],
     byUnitType: [],
     byNonReservedUnitType: [],
-    byReservedType: [],
     byAMI: [],
     hmi: {
       columns: [],

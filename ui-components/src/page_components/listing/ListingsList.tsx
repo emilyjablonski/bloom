@@ -27,14 +27,15 @@ const ListingsList = (props: ListingsProps) => {
     let unitSummaries = [] as GroupedTableGroup[]
     if (listing.unitsSummarized !== undefined) {
       unitSummaries = groupNonReservedAndReservedSummaries(
-        listing.unitsSummarized.byNonReservedUnitType,
-        listing.unitsSummarized.byReservedType
+        listing.unitsSummarized.byNonReservedUnitType
       )
     }
 
     // address as subtitle
     const { street, city, state, zipCode } = listing.buildingAddress || {}
     const subtitle = `${street}, ${city} ${state}, ${zipCode}`
+
+    console.log(listing)
 
     return (
       <article key={listing.id} className="listings-row">
@@ -53,12 +54,15 @@ const ListingsList = (props: ListingsProps) => {
           )}
           <div className="listings-row_table">
             {unitSummaries && (
-              <GroupedTable
-                headers={unitSummariesHeaders}
-                data={unitSummaries}
-                responsiveCollapse={true}
-                cellClassName="px-5 py-3"
-              />
+              <>
+                {listing.reservedCommunityType && `heblo`}
+                <GroupedTable
+                  headers={unitSummariesHeaders}
+                  data={unitSummaries}
+                  responsiveCollapse={true}
+                  cellClassName="px-5 py-3"
+                />
+              </>
             )}
           </div>
           <LinkButton href={`/listing/${listing.id}/${listing.urlSlug}`}>
