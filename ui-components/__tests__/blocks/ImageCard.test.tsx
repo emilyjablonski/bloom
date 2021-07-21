@@ -41,6 +41,7 @@ describe("<ImageCard>", () => {
         title={"My Building"}
         subtitle={"The Address"}
         listing={listing}
+        showStatus={true}
       />
     )
     expect(getByText("Applications Closed", { exact: false })).not.toBeNull()
