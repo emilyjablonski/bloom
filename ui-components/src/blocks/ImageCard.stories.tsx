@@ -30,6 +30,7 @@ export const withListing = () => (
     imageUrl="/images/listing.jpg"
     title="Hello World"
     listing={listing}
+    showStatus={true}
   />
 )
 

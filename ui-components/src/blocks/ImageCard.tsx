@@ -3,6 +3,7 @@ import { LocalizedLink } from "../actions/LocalizedLink"
 import { ApplicationStatus } from "../notifications/ApplicationStatus"
 import "./ImageCard.scss"
 import { Listing } from "@bloom-housing/backend-core/types"
+import { t } from "../helpers/translator"
 
 export interface ImageCardProps {
   imageUrl: string
@@ -11,12 +12,13 @@ export interface ImageCardProps {
   href?: string
   listing?: Listing
   description?: string
+  showStatus?: boolean
 }
 
 const ImageCard = (props: ImageCardProps) => {
   let statusLabel
 
-  if (props.listing) {
+  if (props.showStatus && props.listing) {
     statusLabel = (
       <aside className="image-card__status">
         <ApplicationStatus listing={props.listing} vivid />
@@ -28,9 +30,13 @@ const ImageCard = (props: ImageCardProps) => {
     <div className="image-card__wrapper">
       <figure className="image-card">
         {props.imageUrl && (
-          <img src={props.imageUrl} alt={props.description || "A picture of the building"} />
+          <img src={props.imageUrl} alt={props.description || t("listings.buildingImageAltText")} />
         )}
-
+        {props.listing?.reservedCommunityType && (
+          <div className="image-card__label">
+            {t(`listings.reservedCommunityTypes.${props.listing.reservedCommunityType.name}`)}
+          </div>
+        )}
         <figcaption className="image-card__figcaption">
           <h2 className="image-card__title">{props.title}</h2>
           {props.subtitle && <p className="image-card__subtitle">{props.subtitle}</p>}

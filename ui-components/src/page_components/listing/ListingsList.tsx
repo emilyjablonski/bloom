@@ -46,6 +46,7 @@ const ListingsList = (props: ListingsProps) => {
             imageUrl={imageUrl}
             href={`/listing/${listing.id}/${listing.urlSlug}`}
             listing={listing}
+            showStatus={true}
           />
         </div>
         <div className="listings-row_content">
@@ -55,7 +56,7 @@ const ListingsList = (props: ListingsProps) => {
           <div className="listings-row_table">
             {unitSummaries && (
               <>
-                {listing.reservedCommunityType && `heblo`}
+                {/* {listing.reservedCommunityType && `heblo`} */}
                 <GroupedTable
                   headers={unitSummariesHeaders}
                   data={unitSummaries}
