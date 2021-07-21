@@ -172,7 +172,6 @@ const defaults: FormListing = {
     amiPercentages: [],
     byUnitTypeAndRent: [],
     byUnitType: [],
-    byNonReservedUnitType: [],
     byAMI: [],
     hmi: {
       columns: [],
@@ -186,7 +185,6 @@ export type TempUnit = Unit & {
 }
 
 const formatFormData = (data: FormListing, units: TempUnit[]) => {
-  console.log(data.reservedCommunityType)
   const showWaitlistNumber =
     data.waitlistOpenQuestion === YesNoAnswer.Yes && data.waitlistSizeQuestion === YesNoAnswer.Yes
 

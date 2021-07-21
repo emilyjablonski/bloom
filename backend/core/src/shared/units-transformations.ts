@@ -237,10 +237,9 @@ const summarizeUnitsByType = (units: Units, unitTypes: UnitTypeDto[]): UnitSumma
 const summarizeByAmi = (units: Units, amiPercentages: string[]) => {
   return amiPercentages.map((percent: string) => {
     const unitsByAmiPercentage = units.filter((unit: Unit) => unit.amiPercentage == percent)
-    const nonReservedUnitsByAmiPercentage = unitsByAmiPercentage
     return {
       percent: percent,
-      byNonReservedUnitType: summarizeUnitsByTypeAndRent(nonReservedUnitsByAmiPercentage),
+      byUnitType: summarizeUnitsByTypeAndRent(unitsByAmiPercentage),
     }
   })
 }
@@ -256,9 +255,7 @@ export const transformUnits = (units: Unit[]): UnitsSummarized => {
   data.amiPercentages = Array.from(
     new Set(units.map((unit) => unit.amiPercentage).filter((item) => item != null))
   )
-  const nonReservedUnits = units
   data.byUnitTypeAndRent = summarizeUnitsByTypeAndRent(units)
-  data.byNonReservedUnitType = summarizeUnitsByTypeAndRent(nonReservedUnits)
   data.byUnitType = summarizeUnitsByType(units, data.unitTypes)
   data.byAMI = summarizeByAmi(units, data.amiPercentages)
   data.hmi = hmiData(units, data.byUnitType, data.amiPercentages)

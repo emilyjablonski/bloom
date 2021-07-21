@@ -2,7 +2,7 @@ import * as React from "react"
 import { ImageCard } from "../../blocks/ImageCard"
 import { Listing } from "@bloom-housing/backend-core/types"
 import { LinkButton } from "../../actions/LinkButton"
-import { groupNonReservedAndReservedSummaries } from "../../helpers/tableSummaries"
+import { getSummariesTable } from "../../helpers/tableSummaries"
 import { GroupedTable, GroupedTableGroup } from "../../tables/GroupedTable"
 import { imageUrlFromListing } from "../../helpers/photos"
 import { t } from "../../helpers/translator"
@@ -26,16 +26,12 @@ const ListingsList = (props: ListingsProps) => {
 
     let unitSummaries = [] as GroupedTableGroup[]
     if (listing.unitsSummarized !== undefined) {
-      unitSummaries = groupNonReservedAndReservedSummaries(
-        listing.unitsSummarized.byNonReservedUnitType
-      )
+      unitSummaries = getSummariesTable(listing.unitsSummarized.byUnitTypeAndRent)
     }
 
     // address as subtitle
     const { street, city, state, zipCode } = listing.buildingAddress || {}
     const subtitle = `${street}, ${city} ${state}, ${zipCode}`
-
-    console.log(listing)
 
     return (
       <article key={listing.id} className="listings-row">
@@ -55,15 +51,12 @@ const ListingsList = (props: ListingsProps) => {
           )}
           <div className="listings-row_table">
             {unitSummaries && (
-              <>
-                {/* {listing.reservedCommunityType && `heblo`} */}
-                <GroupedTable
-                  headers={unitSummariesHeaders}
-                  data={unitSummaries}
-                  responsiveCollapse={true}
-                  cellClassName="px-5 py-3"
-                />
-              </>
+              <GroupedTable
+                headers={unitSummariesHeaders}
+                data={unitSummaries}
+                responsiveCollapse={true}
+                cellClassName="px-5 py-3"
+              />
             )}
           </div>
           <LinkButton href={`/listing/${listing.id}/${listing.urlSlug}`}>
